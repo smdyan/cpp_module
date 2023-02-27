@@ -1,0 +1,36 @@
+SRC		=	main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp\
+			Intern.cpp
+OBJ		=	$(SRC:.cpp=.o)
+NAME	=	bure
+CC		=	c++
+CFLAGS	=	-Wall -Wextra -Werror -MD -MP -std=c++98
+DEPENDS :=	$(SRC:.cpp=.d)
+FILE	=	christmas_shrubbery
+
+
+.PHONY	:	all re clean fclean
+
+all		:	$(NAME)
+
+$(NAME)	:	$(OBJ) Makefile
+			$(CC) $(OBJ) -o $(NAME)
+
+%.o		:	%.cpp
+			$(CC) $(CFLAGS) -c $< -o ${<:.cpp=.o}
+
+clean	:	
+			rm -f *.o $(DEPENDS)
+
+fclean	:	clean
+			rm -f $(NAME)
+			rm -f $(FILE)
+
+x		:	all
+			./$(NAME)
+
+leaks	:	all
+			leaks --atExit -- ./$(NAME)
+
+re		:	fclean all
+
+-include $(DEPENDS)

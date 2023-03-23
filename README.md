@@ -1,5 +1,5 @@
 # cpp_module
-Ecole42 educational project - C++ OOP
+Ecole42 educational project - C++ Object-Oriented Programming
 
 Module01 - Memory allocation, pointers to members, references, switch statement
 Module02 - Ad-hoc polymorphism, operator overloading
